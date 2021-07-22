@@ -31,6 +31,9 @@ namespace DIO.Bank
 					case "5":
 						Depositar();
 						break;
+					case "6":
+						Console.WriteLine(TotalDeTransacoesFeitas);
+						break;
                     case "C":
 						Console.Clear();
 						break;
@@ -53,6 +56,7 @@ namespace DIO.Bank
 
 			Console.Write("Digite o valor a ser depositado: ");
 			double valorDeposito = double.Parse(Console.ReadLine());
+			TotalDeTransacoesFeitas++;
 
             listContas[indiceConta].Depositar(valorDeposito);
 		}
@@ -64,6 +68,7 @@ namespace DIO.Bank
 
 			Console.Write("Digite o valor a ser sacado: ");
 			double valorSaque = double.Parse(Console.ReadLine());
+			TotalDeTransacoesFeitas++;
 
             listContas[indiceConta].Sacar(valorSaque);
 		}
@@ -78,6 +83,8 @@ namespace DIO.Bank
 
 			Console.Write("Digite o valor a ser transferido: ");
 			double valorTransferencia = double.Parse(Console.ReadLine());
+
+			TotalDeTransacoesFeitas++;
 
             listContas[indiceContaOrigem].Transferir(valorTransferencia, listContas[indiceContaDestino]);
 		}
@@ -97,6 +104,8 @@ namespace DIO.Bank
 
 			Console.Write("Digite o crédito: ");
 			double entradaCredito = double.Parse(Console.ReadLine());
+
+			
 
 			Conta novaConta = new Conta(tipoConta: (TipoConta)entradaTipoConta,
 										saldo: entradaSaldo,
@@ -138,6 +147,7 @@ namespace DIO.Bank
 			Console.WriteLine("3- Transferir");
 			Console.WriteLine("4- Sacar");
 			Console.WriteLine("5- Depositar");
+			Console.WriteLine("6- Listar total de Transações feitas");
             Console.WriteLine("C- Limpar Tela");
 			Console.WriteLine("X- Sair");
 			Console.WriteLine();
@@ -146,5 +156,6 @@ namespace DIO.Bank
 			Console.WriteLine();
 			return opcaoUsuario;
 		}
+		public static int TotalDeTransacoesFeitas{get; private set;}
 	}
 }

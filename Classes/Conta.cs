@@ -58,6 +58,5 @@ namespace DIO.Bank
             retorno += "Crédito " + this.Credito;
 			return retorno;
 		}
-		public static int TotalDeTransacoesFeitas{get; private set;}
 	}
 }
